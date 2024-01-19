@@ -1,5 +1,6 @@
 import HdWalletKit
 import UIKit
+import CryptoSwift
 
 class WordsController: UIViewController {
     @IBOutlet var textView: UITextView?
@@ -49,40 +50,47 @@ class WordsController: UIViewController {
     }
 
     @IBAction func login() {
-        guard let text = textView?.text else {
-            return
-        }
-        let successBlock = { [weak self] in
-            Manager.shared.login(restoreData: text, syncModeIndex: self?.syncModeListControl.selectedSegmentIndex ?? 0)
-
-            if let window = UIApplication.shared.windows.filter(\.isKeyWindow).first {
-                let mainController = MainController()
-                UIView.transition(with: window, duration: 0.5, options: .transitionCrossDissolve, animations: {
-                    window.rootViewController = mainController
-                })
+        Task { @MainActor in
+            guard let text = textView?.text else {
+                return
             }
-        }
-
-        let errorBlock: (Error) -> Void = { [weak self] error in
-            let alert = UIAlertController(title: "Validation Error", message: "\(error)", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .cancel))
-            self?.present(alert, animated: true)
-        }
-
-        let mnemonicWords = text.components(separatedBy: .whitespacesAndNewlines).filter { !$0.isEmpty }
-        if mnemonicWords.count > 1 {
-            do {
-                try Mnemonic.validate(words: mnemonicWords)
-                successBlock()
-            } catch {
-                errorBlock(error)
+            
+            let successBlock = { [weak self] in
+//                Manager.shared.login(restoreData: text, syncModeIndex: self?.syncModeListControl.selectedSegmentIndex ?? 0)
+//                let pkey = Data(hex: "010203")
+//                let apiSigner = MPCSigner(publicKey: pkey)
+//                Manager.shared.login(apiSigner: apiSigner , syncModeIndex: self?.syncModeListControl.selectedSegmentIndex ?? 0)
+                let apiSigner = try! HDApiSigner()
+                Manager.shared.login(apiSigner: apiSigner , syncModeIndex: self?.syncModeListControl.selectedSegmentIndex ?? 0)
+                if let window = UIApplication.shared.windows.filter(\.isKeyWindow).first {
+                    let mainController = MainController()
+                    UIView.transition(with: window, duration: 0.5, options: .transitionCrossDissolve, animations: {
+                        window.rootViewController = mainController
+                    })
+                }
             }
-        } else {
-            do {
-                _ = try HDExtendedKey(extendedKey: text)
-                successBlock()
-            } catch {
-                errorBlock(error)
+            
+            let errorBlock: (Error) -> Void = { [weak self] error in
+                let alert = UIAlertController(title: "Validation Error", message: "\(error)", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .cancel))
+                self?.present(alert, animated: true)
+            }
+            
+            let mnemonicWords = text.components(separatedBy: .whitespacesAndNewlines).filter { !$0.isEmpty }
+            if mnemonicWords.count > 1 {
+                do {
+                    try Mnemonic.validate(words: mnemonicWords)
+                    successBlock()
+                } catch {
+                    errorBlock(error)
+                }
+            } else {
+                do {
+                    _ = try HDExtendedKey(extendedKey: text)
+                    successBlock()
+                } catch {
+                    errorBlock(error)
+                }
             }
         }
     }
