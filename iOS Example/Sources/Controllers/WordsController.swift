@@ -1,6 +1,7 @@
 import HdWalletKit
 import UIKit
 import CryptoSwift
+import mpc_kit_swift
 
 class WordsController: UIViewController {
     @IBOutlet var textView: UITextView?
@@ -55,12 +56,16 @@ class WordsController: UIViewController {
                 return
             }
             
+//            var apiSigner = MpcSigningKit()
+//            try! await apiSigner.login()
             let successBlock = { [weak self] in
 //                Manager.shared.login(restoreData: text, syncModeIndex: self?.syncModeListControl.selectedSegmentIndex ?? 0)
-//                let pkey = Data(hex: "010203")
-//                let apiSigner = MPCSigner(publicKey: pkey)
+                
 //                Manager.shared.login(apiSigner: apiSigner , syncModeIndex: self?.syncModeListControl.selectedSegmentIndex ?? 0)
-                let apiSigner = try! HDApiSigner()
+                let pkey = Data(hex: "2b5f58d8e340f1ab922e89b3a69a68930edfe51364644a456335e179bc130128")
+                
+                
+                let apiSigner = try! HDApiSigner(privateKey: pkey)
                 Manager.shared.login(apiSigner: apiSigner , syncModeIndex: self?.syncModeListControl.selectedSegmentIndex ?? 0)
                 if let window = UIApplication.shared.windows.filter(\.isKeyWindow).first {
                     let mainController = MainController()

@@ -28,6 +28,11 @@ public class HDApiSigner : ISigner {
     
     convenience init (text: String ) throws {
         let words = text.components(separatedBy: .whitespacesAndNewlines)
+//        if words > 1 {
+////            try HDExtendedKey(seed: text, xpri)
+//            try HDPrivateKey(seed: text, xPrivKey: 0)
+//        }
+        
         let extendedKey = try! HDExtendedKey(extendedKey: text )
         let key = extendedKey.serialized
         try self.init(privateKey: key)
