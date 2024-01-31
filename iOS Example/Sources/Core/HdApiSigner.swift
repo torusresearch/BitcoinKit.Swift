@@ -8,22 +8,22 @@
 
 import Foundation
 import BitcoinCore
-import curvelib_swift
+import curveSecp256k1
 import HdWalletKit
 
 public class HDApiSigner : ISigner {
     
     public var publicKey: Data
-    
-    var sckey: curvelib_swift.SecretKey
+    // public key in compress format 
+    var sckey: curveSecp256k1.SecretKey
     init(privateKey: Data) throws {
         self.sckey = try SecretKey(hex: privateKey.hexString)
-        self.publicKey = Data(hex: try self.sckey.to_public().serialize(compressed: false))
+        self.publicKey = Data(hex: try self.sckey.toPublic().serialize(compressed: true))
     }
     
     init() throws {
-        self.sckey = SecretKey()
-        self.publicKey = Data(hex: try self.sckey.to_public().serialize(compressed: false))
+        self.sckey = curveSecp256k1.SecretKey()
+        self.publicKey = Data(hex: try self.sckey.toPublic().serialize(compressed: true))
     }
     
     convenience init (text: String ) throws {
@@ -39,7 +39,9 @@ public class HDApiSigner : ISigner {
     }
     
     public func sign(message: Data) -> Data {
-        return try! Data(hex: curvelib_swift.ECDSA.sign_recoverable(key: self.sckey, hash: message.hexString).serialize())
+        let sigs = try! Data(hex: curveSecp256k1.ECDSA.signRecoverable(key: self.sckey, hash: message.hexString).serialize_der()
+        )
+        return sigs
     }
     
     public func schnorrSign(message: Data, publicKey: Data) -> Data {

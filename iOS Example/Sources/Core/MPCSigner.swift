@@ -9,25 +9,19 @@
 import Foundation
 import BitcoinCore
 import mpc_kit_swift
-import tss_client_swift
-import tkey_mpc_swift
+import curveSecp256k1
 
 extension MpcSigningKit : ISigner {
-//public class MPCSigner : ISigner {
     
     public var publicKey : Data {
-        let semaphore = DispatchSemaphore(value: 0)
-        var result : Data?
-        performAsyncOperation(completion: { myresult  in
-            result = myresult
-        })
-        semaphore.wait()
-
-        return result ?? Data([])
+        let pkey = self.getTssPubKey()
+        return pkey
     }
     
     public func sign(message: Data) -> Data {
-        return message
+        let signature =  self.tssSign(message: message)
+        let sigDer = try? Data(hex: Signature(hex: signature.hexString).serialize_der())
+        return sigDer ?? Data()
     }
     
     public func schnorrSign(message: Data, publicKey: Data) -> Data {
@@ -35,15 +29,4 @@ extension MpcSigningKit : ISigner {
         print (publicKey)
         return message
     }
-    
-    func performAsyncOperation(completion: @escaping (Data) -> Void) {
-        Task {
-            // Simulate an asynchronous operation
-            let tss_tag = try! TssModule.get_tss_tag(threshold_key: self.tkey! )
-            
-            let result = try! await Data(hex: TssModule.get_tss_pub_key(threshold_key: self.tkey!, tss_tag: tss_tag ) )
-            completion(result)
-        }
-    }
-
 }

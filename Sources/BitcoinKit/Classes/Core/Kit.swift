@@ -57,7 +57,7 @@ public class Kit: AbstractKit {
                 apiTransactionProvider = BlockchainComApi(url: "https://blockchain.info", blockHashFetcher: hsBlockHashFetcher, logger: logger)
             }
         case .testNet:
-            apiTransactionProvider = BCoinApi(url: "https://btc-testnet.horizontalsystems.xyz/api", logger: logger)
+            apiTransactionProvider = MempoolSpaceApi(url: "https://mempool.space/testnet/api", logger: logger)
         case .regTest:
             apiTransactionProvider = nil
         }

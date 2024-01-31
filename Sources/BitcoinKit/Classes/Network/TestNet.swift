@@ -22,7 +22,7 @@ class TestNet: INetwork {
         "testnet-seed.bitcoin.petertodd.org", // Peter Todd
         "testnet-seed.bitcoin.jonasschnelli.ch", // Jonas Schnelli
         "testnet-seed.bluematt.me", // Matt Corallo
-        "testnet-seed.bitcoin.schildbach.de", // Andreas Schildbach
+        "seed.testnet.bitcoin.sprovoost.nl",
         "bitcoin-testnet.bloqseeds.net", // Bloq
     ]
 

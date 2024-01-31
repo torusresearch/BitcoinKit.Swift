@@ -56,16 +56,22 @@ class WordsController: UIViewController {
                 return
             }
             
-//            var apiSigner = MpcSigningKit()
-//            try! await apiSigner.login()
+            var apiSigner = MpcSigningKit()
+            
+//            try await apiSigner.login()
+//            try await apiSigner.resetAccount()
+            
+            try await apiSigner.login()
+            try await apiSigner.inputFactor(factorKey: "ba4ce24b46d9b12684e6c679112ddfe55082501e9599cb902c3e68ac38d551b5")
+            
+            
+//            try! await apiSigner.resetAccount()
             let successBlock = { [weak self] in
 //                Manager.shared.login(restoreData: text, syncModeIndex: self?.syncModeListControl.selectedSegmentIndex ?? 0)
                 
 //                Manager.shared.login(apiSigner: apiSigner , syncModeIndex: self?.syncModeListControl.selectedSegmentIndex ?? 0)
-                let pkey = Data(hex: "2b5f58d8e340f1ab922e89b3a69a68930edfe51364644a456335e179bc130128")
-                
-                
-                let apiSigner = try! HDApiSigner(privateKey: pkey)
+//                let pkey = Data(hex: "2b5f58d8e340f1ab922e89b3a69a68930edfe51364644a456335e179bc130128")
+//                let apiSigner = try! HDApiSigner(privateKey: pkey)
                 Manager.shared.login(apiSigner: apiSigner , syncModeIndex: self?.syncModeListControl.selectedSegmentIndex ?? 0)
                 if let window = UIApplication.shared.windows.filter(\.isKeyWindow).first {
                     let mainController = MainController()
