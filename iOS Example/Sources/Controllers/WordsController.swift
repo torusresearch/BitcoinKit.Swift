@@ -1,7 +1,22 @@
 import HdWalletKit
 import UIKit
 import CryptoSwift
-import mpc_kit_swift
+import mpc_core_kit_swift
+
+class MemoryStorage : ILocalStorage {
+    var memory : [String: Data] = [:]
+    
+    func get(key: String) async throws -> Data {
+        guard let data = memory[key] else  {
+            return Data()
+        }
+        return data
+    }
+    
+    func set(key: String, payload: Data) async throws {
+        memory[key] = payload
+    }
+}
 
 class WordsController: UIViewController {
     @IBOutlet var textView: UITextView?
@@ -55,14 +70,22 @@ class WordsController: UIViewController {
             guard let text = textView?.text else {
                 return
             }
+            var memoryStorage = MemoryStorage()
             
-            var apiSigner = MpcSigningKit()
-            
+            var apiSigner = MpcCoreKit(web3AuthClientId: "221898609709-obfn3p63741l5333093430j3qeiinaa8.apps.googleusercontent.com", web3AuthNetwork: .sapphire(.SAPPHIRE_DEVNET) , localStorage: memoryStorage )
+//            var apiSigner = MpcSigningKit()
 //            try await apiSigner.login()
-//            try await apiSigner.resetAccount()
+//            let detail = try await apiSigner.nodeDetailsManager.getNodeDetails(verifier: "tx", verifierID: "test")
             
-            try await apiSigner.login()
-            try await apiSigner.inputFactor(factorKey: "ba4ce24b46d9b12684e6c679112ddfe55082501e9599cb902c3e68ac38d551b5")
+            let result1 = try? await apiSigner.login(loginProvider: .google, verifier: "google-lrc")
+            
+//            try! await apiSigner.resetAccount()
+            
+//            print(detail.torusNodeEndpoints)
+//            print(URL(string: detail.torusNodeEndpoints[0])?.host)
+            
+//            let result = try? await apiSigner.login(loginProvider: .google, verifier: "google-lrc")
+//            try await apiSigner.inputFactor(factorKey: "ba4ce24b46d9b12684e6c679112ddfe55082501e9599cb902c3e68ac38d551b5")
             
             
 //            try! await apiSigner.resetAccount()

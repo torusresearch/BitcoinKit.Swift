@@ -8,10 +8,10 @@
 
 import Foundation
 import BitcoinCore
-import mpc_kit_swift
+import mpc_core_kit_swift
 import curveSecp256k1
 
-extension MpcSigningKit : ISigner {
+extension MpcCoreKit : ISigner {
     
     public var publicKey : Data {
         let pkey = self.getTssPubKey()

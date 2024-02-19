@@ -30,7 +30,8 @@
 		D36AAAA823A2125E0065B32B /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36AAA9223A2125D0065B32B /* Manager.swift */; };
 		D36AAAAA23A2125E0065B32B /* TransactionRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36AAA9423A2125D0065B32B /* TransactionRecord.swift */; };
 		D36AAAAC23A212E30065B32B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D36AAAAB23A212E30065B32B /* LaunchScreen.xib */; };
-		F0C4F8CA2B6A194C0096B331 /* mpc-kit-swift in Frameworks */ = {isa = PBXBuildFile; productRef = F0C4F8C92B6A194C0096B331 /* mpc-kit-swift */; };
+		F08DBDF22B830EE600B2122A /* mpc-core-kit-swift in Frameworks */ = {isa = PBXBuildFile; productRef = F08DBDF12B830EE600B2122A /* mpc-core-kit-swift */; };
+		F08DBDF52B833AF800B2122A /* mpc-core-kit-swift in Frameworks */ = {isa = PBXBuildFile; productRef = F08DBDF42B833AF800B2122A /* mpc-core-kit-swift */; };
 		F0CBFC592B592CAF00B38672 /* MPCSigner.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CBFC582B592CAE00B38672 /* MPCSigner.swift */; };
 		F0CBFC602B5A1B5400B38672 /* HdApiSigner.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CBFC5F2B5A1B5400B38672 /* HdApiSigner.swift */; };
 /* End PBXBuildFile section */
@@ -69,7 +70,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F0C4F8CA2B6A194C0096B331 /* mpc-kit-swift in Frameworks */,
+				F08DBDF52B833AF800B2122A /* mpc-core-kit-swift in Frameworks */,
+				F08DBDF22B830EE600B2122A /* mpc-core-kit-swift in Frameworks */,
 				6BC11A5628EEAF0D0001FDF1 /* BitcoinKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -175,7 +177,8 @@
 			name = "iOS Example";
 			packageProductDependencies = (
 				6BC11A5528EEAF0D0001FDF1 /* BitcoinKit */,
-				F0C4F8C92B6A194C0096B331 /* mpc-kit-swift */,
+				F08DBDF12B830EE600B2122A /* mpc-core-kit-swift */,
+				F08DBDF42B833AF800B2122A /* mpc-core-kit-swift */,
 			);
 			productName = BitcoinKit;
 			productReference = 6BE77D6F28F687F400BD03EF /* BitcoinKit Demo.app */;
@@ -208,7 +211,7 @@
 			);
 			mainGroup = 607FACC71AFB9204008FA782;
 			packageReferences = (
-				F0C4F8C82B6A18370096B331 /* XCRemoteSwiftPackageReference "mpc-core-kit-swift" */,
+				F08DBDF32B833AF800B2122A /* XCRemoteSwiftPackageReference "mpc-core-kit-swift" */,
 			);
 			productRefGroup = 607FACC71AFB9204008FA782;
 			projectDirPath = "";
@@ -430,11 +433,11 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		F0C4F8C82B6A18370096B331 /* XCRemoteSwiftPackageReference "mpc-core-kit-swift" */ = {
+		F08DBDF32B833AF800B2122A /* XCRemoteSwiftPackageReference "mpc-core-kit-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/tkey/mpc-core-kit-swift";
 			requirement = {
-				branch = main;
+				branch = "feat/update-interface";
 				kind = branch;
 			};
 		};
@@ -445,10 +448,14 @@
 			isa = XCSwiftPackageProductDependency;
 			productName = BitcoinKit;
 		};
-		F0C4F8C92B6A194C0096B331 /* mpc-kit-swift */ = {
+		F08DBDF12B830EE600B2122A /* mpc-core-kit-swift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F0C4F8C82B6A18370096B331 /* XCRemoteSwiftPackageReference "mpc-core-kit-swift" */;
-			productName = "mpc-kit-swift";
+			productName = "mpc-core-kit-swift";
+		};
+		F08DBDF42B833AF800B2122A /* mpc-core-kit-swift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F08DBDF32B833AF800B2122A /* XCRemoteSwiftPackageReference "mpc-core-kit-swift" */;
+			productName = "mpc-core-kit-swift";
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
