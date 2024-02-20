@@ -3,20 +3,9 @@ import UIKit
 import CryptoSwift
 import mpc_core_kit_swift
 
-class MemoryStorage : ILocalStorage {
-    var memory : [String: Data] = [:]
-    
-    func get(key: String) async throws -> Data {
-        guard let data = memory[key] else  {
-            return Data()
-        }
-        return data
-    }
-    
-    func set(key: String, payload: Data) async throws {
-        memory[key] = payload
-    }
-}
+let memory = MemoryStorage()
+//let mpcCoreKitInstance = MpcCoreKit(web3AuthClientId: "no id", web3AuthNetwork: .sapphire(.SAPPHIRE_DEVNET), localStorage: memory)
+var mpcCoreKitInstance = MpcCoreKit(web3AuthClientId: "221898609709-obfn3p63741l5333093430j3qeiinaa8.apps.googleusercontent.com", web3AuthNetwork: .sapphire(.SAPPHIRE_DEVNET) , localStorage: memory )
 
 class WordsController: UIViewController {
     @IBOutlet var textView: UITextView?
@@ -70,32 +59,20 @@ class WordsController: UIViewController {
             guard let text = textView?.text else {
                 return
             }
-            var memoryStorage = MemoryStorage()
+                        
+            let result1 = try? await mpcCoreKitInstance.login(loginProvider: .google, verifier: "google-lrc")
             
-            var apiSigner = MpcCoreKit(web3AuthClientId: "221898609709-obfn3p63741l5333093430j3qeiinaa8.apps.googleusercontent.com", web3AuthNetwork: .sapphire(.SAPPHIRE_DEVNET) , localStorage: memoryStorage )
-//            var apiSigner = MpcSigningKit()
-//            try await apiSigner.login()
-//            let detail = try await apiSigner.nodeDetailsManager.getNodeDetails(verifier: "tx", verifierID: "test")
-            
-            let result1 = try? await apiSigner.login(loginProvider: .google, verifier: "google-lrc")
-            
-//            try! await apiSigner.resetAccount()
-            
-//            print(detail.torusNodeEndpoints)
-//            print(URL(string: detail.torusNodeEndpoints[0])?.host)
-            
-//            let result = try? await apiSigner.login(loginProvider: .google, verifier: "google-lrc")
-//            try await apiSigner.inputFactor(factorKey: "ba4ce24b46d9b12684e6c679112ddfe55082501e9599cb902c3e68ac38d551b5")
-            
-            
-//            try! await apiSigner.resetAccount()
+            print( mpcCoreKitInstance.tkey)
             let successBlock = { [weak self] in
 //                Manager.shared.login(restoreData: text, syncModeIndex: self?.syncModeListControl.selectedSegmentIndex ?? 0)
                 
 //                Manager.shared.login(apiSigner: apiSigner , syncModeIndex: self?.syncModeListControl.selectedSegmentIndex ?? 0)
 //                let pkey = Data(hex: "2b5f58d8e340f1ab922e89b3a69a68930edfe51364644a456335e179bc130128")
 //                let apiSigner = try! HDApiSigner(privateKey: pkey)
-                Manager.shared.login(apiSigner: apiSigner , syncModeIndex: self?.syncModeListControl.selectedSegmentIndex ?? 0)
+                Manager.shared.login(apiSigner: mpcCoreKitInstance , syncModeIndex: self?.syncModeListControl.selectedSegmentIndex ?? 0)
+                
+                
+                
                 if let window = UIApplication.shared.windows.filter(\.isKeyWindow).first {
                     let mainController = MainController()
                     UIView.transition(with: window, duration: 0.5, options: .transitionCrossDissolve, animations: {

@@ -39,8 +39,8 @@ public class HDApiSigner : ISigner {
     }
     
     public func sign(message: Data) -> Data {
-        let sigs = try! Data(hex: curveSecp256k1.ECDSA.signRecoverable(key: self.sckey, hash: message.hexString).serialize_der()
-        )
+        guard let sigs = try! Data(hexString: curveSecp256k1.ECDSA.signRecoverable(key: self.sckey, hash: message.hexString).serialize_der()
+        ) else { return Data() }
         return sigs
     }
     
