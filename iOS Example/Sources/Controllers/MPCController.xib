@@ -60,6 +60,9 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" title="Button"/>
                     <buttonConfiguration key="configuration" style="plain" title="Enable MFA" buttonSize="small"/>
+                    <connections>
+                        <action selector="handleEnableMFA:" destination="-1" eventType="touchUpInside" id="4uH-2C-Isz"/>
+                    </connections>
                 </button>
                 <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="vbW-ce-mxZ">
                     <rect key="frame" x="177" y="233" width="20" height="20"/>

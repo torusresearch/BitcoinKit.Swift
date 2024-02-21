@@ -3,9 +3,9 @@ import UIKit
 import CryptoSwift
 import mpc_core_kit_swift
 
-let memory = MemoryStorage()
-//let mpcCoreKitInstance = MpcCoreKit(web3AuthClientId: "no id", web3AuthNetwork: .sapphire(.SAPPHIRE_DEVNET), localStorage: memory)
-var mpcCoreKitInstance = MpcCoreKit(web3AuthClientId: "221898609709-obfn3p63741l5333093430j3qeiinaa8.apps.googleusercontent.com", web3AuthNetwork: .sapphire(.SAPPHIRE_DEVNET) , localStorage: memory )
+//let memory = MemoryStorage()
+////let mpcCoreKitInstance = MpcCoreKit(web3AuthClientId: "no id", web3AuthNetwork: .sapphire(.SAPPHIRE_DEVNET), localStorage: memory)
+//var mpcCoreKitInstance = MpcCoreKit(web3AuthClientId: "221898609709-obfn3p63741l5333093430j3qeiinaa8.apps.googleusercontent.com", web3AuthNetwork: .sapphire(.SAPPHIRE_DEVNET) , localStorage: memory )
 
 class WordsController: UIViewController {
     @IBOutlet var textView: UITextView?
@@ -62,7 +62,6 @@ class WordsController: UIViewController {
                         
             let result1 = try? await mpcCoreKitInstance.login(loginProvider: .google, verifier: "google-lrc")
             
-            print( mpcCoreKitInstance.tkey)
             let successBlock = { [weak self] in
 //                Manager.shared.login(restoreData: text, syncModeIndex: self?.syncModeListControl.selectedSegmentIndex ?? 0)
                 

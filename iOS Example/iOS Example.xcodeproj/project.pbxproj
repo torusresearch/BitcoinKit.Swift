@@ -34,6 +34,8 @@
 		F08DBDF52B833AF800B2122A /* mpc-core-kit-swift in Frameworks */ = {isa = PBXBuildFile; productRef = F08DBDF42B833AF800B2122A /* mpc-core-kit-swift */; };
 		F08DBDF72B8449FB00B2122A /* MPCController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08DBDF62B8449FB00B2122A /* MPCController.swift */; };
 		F08DBE032B84697200B2122A /* MPCController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F08DBE022B84697200B2122A /* MPCController.xib */; };
+		F08DBE052B84A18E00B2122A /* MPCLoginController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F08DBE042B84A18E00B2122A /* MPCLoginController.xib */; };
+		F08DBE082B84A1B300B2122A /* MPCLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08DBE072B84A1B300B2122A /* MPCLoginController.swift */; };
 		F0CBFC592B592CAF00B38672 /* MPCSigner.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CBFC582B592CAE00B38672 /* MPCSigner.swift */; };
 		F0CBFC602B5A1B5400B38672 /* HdApiSigner.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CBFC5F2B5A1B5400B38672 /* HdApiSigner.swift */; };
 /* End PBXBuildFile section */
@@ -65,6 +67,8 @@
 		D36AAAAB23A212E30065B32B /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		F08DBDF62B8449FB00B2122A /* MPCController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPCController.swift; sourceTree = "<group>"; };
 		F08DBE022B84697200B2122A /* MPCController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MPCController.xib; sourceTree = "<group>"; };
+		F08DBE042B84A18E00B2122A /* MPCLoginController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MPCLoginController.xib; sourceTree = "<group>"; };
+		F08DBE072B84A1B300B2122A /* MPCLoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPCLoginController.swift; sourceTree = "<group>"; };
 		F0CBFC582B592CAE00B38672 /* MPCSigner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPCSigner.swift; sourceTree = "<group>"; };
 		F0CBFC5F2B5A1B5400B38672 /* HdApiSigner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HdApiSigner.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -126,18 +130,20 @@
 		D36AAA8023A2125D0065B32B /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				D36AAA8123A2125D0065B32B /* SendController.xib */,
 				D36AAA8223A2125D0065B32B /* BalanceController.swift */,
 				D36AAA8323A2125D0065B32B /* Cells */,
 				D36AAA8823A2125D0065B32B /* ReceiveController.swift */,
-				D36AAA8923A2125D0065B32B /* WordsController.swift */,
+				D36AAA8E23A2125D0065B32B /* ReceiveController.xib */,
 				D36AAA8A23A2125D0065B32B /* MainController.swift */,
+				D36AAA8923A2125D0065B32B /* WordsController.swift */,
 				D36AAA8B23A2125D0065B32B /* WordsController.xib */,
 				D36AAA8C23A2125D0065B32B /* TransactionsController.swift */,
 				D36AAA8D23A2125D0065B32B /* SendController.swift */,
-				D36AAA8E23A2125D0065B32B /* ReceiveController.xib */,
+				D36AAA8123A2125D0065B32B /* SendController.xib */,
 				F08DBDF62B8449FB00B2122A /* MPCController.swift */,
 				F08DBE022B84697200B2122A /* MPCController.xib */,
+				F08DBE072B84A1B300B2122A /* MPCLoginController.swift */,
+				F08DBE042B84A18E00B2122A /* MPCLoginController.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -236,6 +242,7 @@
 				D36AAA9923A2125E0065B32B /* SendController.xib in Resources */,
 				D36AAA9E23A2125E0065B32B /* BalanceCell.xib in Resources */,
 				D36AAAA223A2125E0065B32B /* WordsController.xib in Resources */,
+				F08DBE052B84A18E00B2122A /* MPCLoginController.xib in Resources */,
 				D36AAAAC23A212E30065B32B /* LaunchScreen.xib in Resources */,
 				D36AAAA623A2125E0065B32B /* Assets.xcassets in Resources */,
 				D36AAA9B23A2125E0065B32B /* TransactionCell.xib in Resources */,
@@ -264,6 +271,7 @@
 				D36AAAA423A2125E0065B32B /* SendController.swift in Sources */,
 				F0CBFC602B5A1B5400B38672 /* HdApiSigner.swift in Sources */,
 				D36AAA9D23A2125E0065B32B /* BalanceCell.swift in Sources */,
+				F08DBE082B84A1B300B2122A /* MPCLoginController.swift in Sources */,
 				D36AAA9823A2125E0065B32B /* BaseAdapter.swift in Sources */,
 				D36AAA9A23A2125E0065B32B /* BalanceController.swift in Sources */,
 				D36AAAA123A2125E0065B32B /* MainController.swift in Sources */,

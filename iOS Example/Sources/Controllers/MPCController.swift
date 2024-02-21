@@ -12,6 +12,22 @@ import CryptoSwift
 import mpc_core_kit_swift
 import curveSecp256k1
 
+class UserStorage : ILocalStorage {
+    var memory : [String: Data] = [:]
+    
+    func get(key: String) async throws -> Data {
+        
+        guard let data = UserDefaults().value(forKey: key) as? Data else  {
+            return Data()
+        }
+        return data
+    }
+    
+    func set(key: String, payload: Data) async throws {
+        UserDefaults().setValue(payload, forKey: key)
+    }
+}
+
 class MemoryStorage : ILocalStorage {
     var memory : [String: Data] = [:]
     
@@ -69,7 +85,7 @@ class MPCController: UIViewController {
     func handleCreateFactor (action: UIAction) {
 
         loadingIndicator.startAnimating()
-        Task {
+        Task { @MainActor in
             let factorKey = try await mpcCoreKitInstance.createFactor(tssShareIndex: .DEVICE,factorKey: nil, factorDescription: .DeviceShare, additionalMetadata: [:])
             
             try await refreshFactorPubs()
@@ -81,7 +97,7 @@ class MPCController: UIViewController {
     }
     
     func handleDeleteFactor (action: UIAction) {
-        Task {
+        Task { @MainActor in
             let factorkey = cleanupFactor[action.title]
             try await mpcCoreKitInstance.deleteFactor(deleteFactorPub: action.title, deleteFactorKey: factorkey)
             
@@ -95,6 +111,14 @@ class MPCController: UIViewController {
 //        deleteFactorButton.menu = UIMenu( children: currentChildren )
     }
     
+    @IBAction func handleEnableMFA(_ sender: Any) {
+        Task {
+            // loading ui
+            try await mpcCoreKitInstance.enableMFA()
+            // stop loading ui
+        }
+        
+    }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesEnded(touches, with: event)
