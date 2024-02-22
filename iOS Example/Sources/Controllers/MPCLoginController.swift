@@ -6,10 +6,12 @@ import BitcoinCore
 
 let memory = UserStorage()
 //let memory = MemoryStorage()
-
+//var web3AuthClientId = "BPi5PB_UiIZ-cPz1GtV5i1I2iOSOHuimiXBI0e-Oe_u6X3oVAbCiAZOTEBtTXw4tsluTITPqA8zMsfxIKMjiqNQ"
 var web3AuthClientId = "519228911939-cri01h55lsjbsia1k7ll6qpalrus75ps.apps.googleusercontent.com"
+
+var googleClientId = "519228911939-cri01h55lsjbsia1k7ll6qpalrus75ps.apps.googleusercontent.com"
 var globalVerifier = "w3a-google-demo"
-//var web3AuthClientId = "221898609709-obfn3p63741l5333093430j3qeiinaa8.apps.googleusercontent.com"
+//var googleClientId = "221898609709-obfn3p63741l5333093430j3qeiinaa8.apps.googleusercontent.com"
 //var globalVerifier = "google-lrc"
 
 
@@ -47,7 +49,7 @@ class MPCLoginController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        RecoveryView.isHidden = true
+        RecoveryView.isHidden = true
 
         title = "BitcoinKit Demo"
         textConsole.text = ""
@@ -70,6 +72,7 @@ class MPCLoginController: UIViewController {
             // loading
             do {
                 try await mpcCoreKitInstance.inputFactor(factorKey: text)
+                self.login()
             } catch {
                 let errorBlock: (Error) -> Void = { [weak self] error in
                     let alert = UIAlertController(title: "Validation Error", message: "\(error)", preferredStyle: .alert)
@@ -82,6 +85,17 @@ class MPCLoginController: UIViewController {
         }
     }
     
+    func login () {
+        
+        Manager.shared.login(apiSigner: mpcCoreKitInstance, syncModeIndex: 1 )
+        if let window = UIApplication.shared.windows.filter(\.isKeyWindow).first {
+            let mainController = MainController()
+            UIView.transition(with: window, duration: 0.5, options: .transitionCrossDissolve, animations: {
+                window.rootViewController = mainController
+            })
+        }
+    }
+    
     @IBAction func loginOauth(_ sender: Any) {
 
         Task { @MainActor in
@@ -90,19 +104,8 @@ class MPCLoginController: UIViewController {
                 alert.addAction(UIAlertAction(title: "OK", style: .cancel))
                 self?.present(alert, animated: true)
             }
-
-            let successBlock = { [weak self] in
-
-                Manager.shared.login(apiSigner: mpcCoreKitInstance, syncModeIndex: 1 )
-                if let window = UIApplication.shared.windows.filter(\.isKeyWindow).first {
-                    let mainController = MainController()
-                    UIView.transition(with: window, duration: 0.5, options: .transitionCrossDissolve, animations: {
-                        window.rootViewController = mainController
-                    })
-                }
-            }
             
-            let result = try? await mpcCoreKitInstance.login(loginProvider: .google, verifier: globalVerifier)
+            let result = try? await mpcCoreKitInstance.login(loginProvider: .google, clientId: googleClientId, verifier: globalVerifier)
             
             
             guard let result = result else {
@@ -110,13 +113,15 @@ class MPCLoginController: UIViewController {
                 return
             }
             
-            if result.required_shares > 0 {
+//            if result.requiredFactors >= 0 {
+                if result.requiredFactors > 0 {
                 // request recover factor key
                 RecoveryView.isHidden = false
-                textConsole.text = try String(data : JSONSerialization.data(withJSONObject: result), encoding: .utf8 )
+                textConsole.text = try String(data: JSONEncoder().encode(result), encoding: .utf8)
+//                textConsole.text = try String(data : JSONSerialization.data(withJSONObject: result), encoding: .utf8 )
                 
             } else {
-                successBlock()
+                self.login()
             }
             
             LoginOauthButton.isOpaque = true

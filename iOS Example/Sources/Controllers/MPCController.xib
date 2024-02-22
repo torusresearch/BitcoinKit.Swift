@@ -14,6 +14,8 @@
             <connections>
                 <outlet property="createFactorButton" destination="yDq-LT-DnR" id="2aW-2C-8vR"/>
                 <outlet property="deleteFactorButton" destination="FHz-5y-PVX" id="XCK-9e-Pr5"/>
+                <outlet property="factorView" destination="GH1-yM-pV9" id="L7X-3Q-TFy"/>
+                <outlet property="factorlabel" destination="QKp-PR-F3f" id="6vh-LT-mCZ"/>
                 <outlet property="loadingIndicator" destination="vbW-ce-mxZ" id="SdJ-Ue-ff8"/>
                 <outlet property="textView" destination="y5F-CA-xUb" id="ODd-9X-1fW"/>
                 <outlet property="view" destination="iN0-l3-epB" id="zow-wA-m9A"/>
@@ -68,6 +70,29 @@
                     <rect key="frame" x="177" y="233" width="20" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </activityIndicatorView>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GH1-yM-pV9">
+                    <rect key="frame" x="67" y="330" width="240" height="128"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QKp-PR-F3f">
+                            <rect key="frame" x="99" y="29" width="42" height="21"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Obl-WF-4ug">
+                            <rect key="frame" x="89" y="69" width="64" height="35"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="Copy"/>
+                            <connections>
+                                <action selector="handleCopy:" destination="-1" eventType="touchUpInside" id="9Y1-QN-sQE"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
