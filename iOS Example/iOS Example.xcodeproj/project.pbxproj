@@ -9,8 +9,10 @@
 /* Begin PBXBuildFile section */
 		2FA5D47CFAEB8DB143F27645 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA5DACF4DE83AC5FE512D28 /* Extensions.swift */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
-		6BC11A5628EEAF0D0001FDF1 /* BitcoinKit in Frameworks */ = {isa = PBXBuildFile; productRef = 6BC11A5528EEAF0D0001FDF1 /* BitcoinKit */; };
 		6BC11A5828EEB0DD0001FDF1 /* BitcoinAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC11A5728EEB0DD0001FDF1 /* BitcoinAdapter.swift */; };
+		787CE6162B85E6070041E53A /* MPCController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 787CE6152B85E5DC0041E53A /* MPCController.xib */; };
+		789DF64E2B86735200FA23EA /* BitcoinKit in Frameworks */ = {isa = PBXBuildFile; productRef = 789DF64D2B86735200FA23EA /* BitcoinKit */; };
+		789DF6522B86737F00FA23EA /* mpc-core-kit-swift in Frameworks */ = {isa = PBXBuildFile; productRef = 789DF6512B86737F00FA23EA /* mpc-core-kit-swift */; };
 		D36AAA9823A2125E0065B32B /* BaseAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36AAA7F23A2125D0065B32B /* BaseAdapter.swift */; };
 		D36AAA9923A2125E0065B32B /* SendController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D36AAA8123A2125D0065B32B /* SendController.xib */; };
 		D36AAA9A23A2125E0065B32B /* BalanceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36AAA8223A2125D0065B32B /* BalanceController.swift */; };
@@ -30,10 +32,7 @@
 		D36AAAA823A2125E0065B32B /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36AAA9223A2125D0065B32B /* Manager.swift */; };
 		D36AAAAA23A2125E0065B32B /* TransactionRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36AAA9423A2125D0065B32B /* TransactionRecord.swift */; };
 		D36AAAAC23A212E30065B32B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D36AAAAB23A212E30065B32B /* LaunchScreen.xib */; };
-		F08DBDF22B830EE600B2122A /* mpc-core-kit-swift in Frameworks */ = {isa = PBXBuildFile; productRef = F08DBDF12B830EE600B2122A /* mpc-core-kit-swift */; };
-		F08DBDF52B833AF800B2122A /* mpc-core-kit-swift in Frameworks */ = {isa = PBXBuildFile; productRef = F08DBDF42B833AF800B2122A /* mpc-core-kit-swift */; };
 		F08DBDF72B8449FB00B2122A /* MPCController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08DBDF62B8449FB00B2122A /* MPCController.swift */; };
-		F08DBE032B84697200B2122A /* MPCController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F08DBE022B84697200B2122A /* MPCController.xib */; };
 		F08DBE052B84A18E00B2122A /* MPCLoginController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F08DBE042B84A18E00B2122A /* MPCLoginController.xib */; };
 		F08DBE082B84A1B300B2122A /* MPCLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08DBE072B84A1B300B2122A /* MPCLoginController.swift */; };
 		F0CBFC592B592CAF00B38672 /* MPCSigner.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CBFC582B592CAE00B38672 /* MPCSigner.swift */; };
@@ -46,6 +45,8 @@
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6BC11A5728EEB0DD0001FDF1 /* BitcoinAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BitcoinAdapter.swift; sourceTree = "<group>"; };
 		6BE77D6F28F687F400BD03EF /* BitcoinKit Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BitcoinKit Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		787CE6152B85E5DC0041E53A /* MPCController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MPCController.xib; sourceTree = "<group>"; };
+		789DF64C2B86730400FA23EA /* mpc-core-kit-swift */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "mpc-core-kit-swift"; path = "../../../GitHub/mpc-core-kit-swift"; sourceTree = "<group>"; };
 		D36AAA7F23A2125D0065B32B /* BaseAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseAdapter.swift; sourceTree = "<group>"; };
 		D36AAA8123A2125D0065B32B /* SendController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SendController.xib; sourceTree = "<group>"; };
 		D36AAA8223A2125D0065B32B /* BalanceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalanceController.swift; sourceTree = "<group>"; };
@@ -66,7 +67,6 @@
 		D36AAA9423A2125D0065B32B /* TransactionRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionRecord.swift; sourceTree = "<group>"; };
 		D36AAAAB23A212E30065B32B /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		F08DBDF62B8449FB00B2122A /* MPCController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPCController.swift; sourceTree = "<group>"; };
-		F08DBE022B84697200B2122A /* MPCController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MPCController.xib; sourceTree = "<group>"; };
 		F08DBE042B84A18E00B2122A /* MPCLoginController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MPCLoginController.xib; sourceTree = "<group>"; };
 		F08DBE072B84A1B300B2122A /* MPCLoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPCLoginController.swift; sourceTree = "<group>"; };
 		F0CBFC582B592CAE00B38672 /* MPCSigner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPCSigner.swift; sourceTree = "<group>"; };
@@ -78,9 +78,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F08DBDF52B833AF800B2122A /* mpc-core-kit-swift in Frameworks */,
-				F08DBDF22B830EE600B2122A /* mpc-core-kit-swift in Frameworks */,
-				6BC11A5628EEAF0D0001FDF1 /* BitcoinKit in Frameworks */,
+				789DF64E2B86735200FA23EA /* BitcoinKit in Frameworks */,
+				789DF6522B86737F00FA23EA /* mpc-core-kit-swift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,6 +91,7 @@
 			children = (
 				607FACD21AFB9204008FA782 /* Sources */,
 				6BE77D6F28F687F400BD03EF /* BitcoinKit Demo.app */,
+				789DF6492B8672F100FA23EA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -118,6 +118,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		789DF6492B8672F100FA23EA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				789DF64C2B86730400FA23EA /* mpc-core-kit-swift */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		D36AAA7B23A2125D0065B32B /* Adapters */ = {
 			isa = PBXGroup;
 			children = (
@@ -141,7 +149,7 @@
 				D36AAA8D23A2125D0065B32B /* SendController.swift */,
 				D36AAA8123A2125D0065B32B /* SendController.xib */,
 				F08DBDF62B8449FB00B2122A /* MPCController.swift */,
-				F08DBE022B84697200B2122A /* MPCController.xib */,
+				787CE6152B85E5DC0041E53A /* MPCController.xib */,
 				F08DBE072B84A1B300B2122A /* MPCLoginController.swift */,
 				F08DBE042B84A18E00B2122A /* MPCLoginController.xib */,
 			);
@@ -188,9 +196,8 @@
 			);
 			name = "iOS Example";
 			packageProductDependencies = (
-				6BC11A5528EEAF0D0001FDF1 /* BitcoinKit */,
-				F08DBDF12B830EE600B2122A /* mpc-core-kit-swift */,
-				F08DBDF42B833AF800B2122A /* mpc-core-kit-swift */,
+				789DF64D2B86735200FA23EA /* BitcoinKit */,
+				789DF6512B86737F00FA23EA /* mpc-core-kit-swift */,
 			);
 			productName = BitcoinKit;
 			productReference = 6BE77D6F28F687F400BD03EF /* BitcoinKit Demo.app */;
@@ -240,13 +247,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				D36AAA9923A2125E0065B32B /* SendController.xib in Resources */,
+				787CE6162B85E6070041E53A /* MPCController.xib in Resources */,
 				D36AAA9E23A2125E0065B32B /* BalanceCell.xib in Resources */,
 				D36AAAA223A2125E0065B32B /* WordsController.xib in Resources */,
 				F08DBE052B84A18E00B2122A /* MPCLoginController.xib in Resources */,
 				D36AAAAC23A212E30065B32B /* LaunchScreen.xib in Resources */,
 				D36AAAA623A2125E0065B32B /* Assets.xcassets in Resources */,
 				D36AAA9B23A2125E0065B32B /* TransactionCell.xib in Resources */,
-				F08DBE032B84697200B2122A /* MPCController.xib in Resources */,
 				D36AAAA523A2125E0065B32B /* ReceiveController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -460,17 +467,12 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		6BC11A5528EEAF0D0001FDF1 /* BitcoinKit */ = {
+		789DF64D2B86735200FA23EA /* BitcoinKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = BitcoinKit;
 		};
-		F08DBDF12B830EE600B2122A /* mpc-core-kit-swift */ = {
+		789DF6512B86737F00FA23EA /* mpc-core-kit-swift */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = "mpc-core-kit-swift";
-		};
-		F08DBDF42B833AF800B2122A /* mpc-core-kit-swift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F08DBDF32B833AF800B2122A /* XCRemoteSwiftPackageReference "mpc-core-kit-swift" */;
 			productName = "mpc-core-kit-swift";
 		};
 /* End XCSwiftPackageProductDependency section */
