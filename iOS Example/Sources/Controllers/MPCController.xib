@@ -15,6 +15,7 @@
                 <outlet property="createFactorButton" destination="yDq-LT-DnR" id="2aW-2C-8vR"/>
                 <outlet property="deleteFactorButton" destination="FHz-5y-PVX" id="XCK-9e-Pr5"/>
                 <outlet property="loadingIndicator" destination="vbW-ce-mxZ" id="SdJ-Ue-ff8"/>
+                <outlet property="recoveryFactorLabel" destination="DMu-IE-dak" id="co5-Jg-oGa"/>
                 <outlet property="textView" destination="y5F-CA-xUb" id="ODd-9X-1fW"/>
                 <outlet property="view" destination="iN0-l3-epB" id="zow-wA-m9A"/>
             </connections>
@@ -24,16 +25,14 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="MPC Demo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y5F-CA-xUb">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MPC Demo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y5F-CA-xUb">
                     <rect key="frame" x="144" y="28" width="87" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FHz-5y-PVX">
+                <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FHz-5y-PVX">
                     <rect key="frame" x="115" y="186" width="145" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                     <menu key="menu" title="Delete Factor" id="1qL-Ry-Wcq">
                         <children>
@@ -43,9 +42,8 @@
                     </menu>
                     <state key="normal" title="Delete Factor"/>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yDq-LT-DnR">
+                <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yDq-LT-DnR">
                     <rect key="frame" x="115" y="124" width="145" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                     <menu key="menu" id="LPC-qV-OF3" userLabel="Create Factor">
                         <children>
@@ -55,26 +53,73 @@
                     </menu>
                     <state key="normal" title="Create Factor"/>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jDH-Ru-fzG">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jDH-Ru-fzG">
                     <rect key="frame" x="137" y="253" width="101" height="28"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" title="Button"/>
                     <buttonConfiguration key="configuration" style="plain" title="Enable MFA" buttonSize="small"/>
                     <connections>
                         <action selector="handleEnableMFA:" destination="-1" eventType="touchUpInside" id="4uH-2C-Isz"/>
                     </connections>
                 </button>
-                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="vbW-ce-mxZ">
-                    <rect key="frame" x="177" y="233" width="20" height="20"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="vbW-ce-mxZ">
+                    <rect key="frame" x="177.5" y="233" width="20" height="20"/>
                 </activityIndicatorView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label " textAlignment="center" lineBreakMode="middleTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DMu-IE-dak">
+                    <rect key="frame" x="89" y="390" width="196" height="114"/>
+                    <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
+                    <rect key="contentStretch" x="0.050000000000000003" y="0.0" width="1" height="1"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="114" id="2Qx-e6-akp"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="21"/>
+                    <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="97G-M5-jYq">
+                    <rect key="frame" x="158" y="512" width="39" height="32"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                    <state key="normal" title="Copy"/>
+                    <connections>
+                        <action selector="onCopyFactor:" destination="-1" eventType="touchUpInside" id="syP-B3-eoR"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JxY-0n-iaR">
+                    <rect key="frame" x="133" y="317" width="108" height="32"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                    <state key="normal" title="get key details"/>
+                    <connections>
+                        <action selector="getkeydetails:" destination="-1" eventType="touchUpInside" id="TFe-LY-lfa"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="DMu-IE-dak" firstAttribute="centerX" secondItem="jDH-Ru-fzG" secondAttribute="centerX" id="2a7-Ez-x0w"/>
+                <constraint firstItem="DMu-IE-dak" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="390" id="ABj-A2-drL"/>
+                <constraint firstItem="DMu-IE-dak" firstAttribute="centerX" secondItem="y5F-CA-xUb" secondAttribute="centerX" id="B2n-xH-z70"/>
+                <constraint firstItem="yDq-LT-DnR" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="115" id="NLV-Ec-4H4"/>
+                <constraint firstItem="yDq-LT-DnR" firstAttribute="top" secondItem="y5F-CA-xUb" secondAttribute="bottom" constant="75" id="O2c-6n-Rg5"/>
+                <constraint firstItem="yDq-LT-DnR" firstAttribute="leading" secondItem="FHz-5y-PVX" secondAttribute="leading" id="TQs-Ox-do3"/>
+                <constraint firstItem="DMu-IE-dak" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="89" id="Y9x-9v-tmm"/>
+                <constraint firstItem="vbW-ce-mxZ" firstAttribute="top" secondItem="FHz-5y-PVX" secondAttribute="bottom" constant="17" id="cSx-Oj-Qe1"/>
+                <constraint firstItem="DMu-IE-dak" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="dBe-w0-Pcf"/>
+                <constraint firstItem="DMu-IE-dak" firstAttribute="centerX" secondItem="FHz-5y-PVX" secondAttribute="centerX" id="hqw-Mn-1PK"/>
+                <constraint firstItem="DMu-IE-dak" firstAttribute="centerX" secondItem="vbW-ce-mxZ" secondAttribute="centerX" id="o83-2v-UDn"/>
+                <constraint firstItem="yDq-LT-DnR" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="124" id="oaK-wJ-j71"/>
+                <constraint firstItem="FHz-5y-PVX" firstAttribute="top" secondItem="yDq-LT-DnR" secondAttribute="bottom" constant="32" id="vbo-jw-F2m"/>
+                <constraint firstItem="DMu-IE-dak" firstAttribute="centerX" secondItem="yDq-LT-DnR" secondAttribute="centerX" id="yHb-W3-5D6"/>
+                <constraint firstItem="DMu-IE-dak" firstAttribute="top" secondItem="jDH-Ru-fzG" secondAttribute="bottom" constant="109" id="zKw-bQ-6vO"/>
+            </constraints>
             <point key="canvasLocation" x="132" y="-11.244377811094454"/>
         </view>
     </objects>
     <resources>
+        <systemColor name="groupTableViewBackgroundColor">
+            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
