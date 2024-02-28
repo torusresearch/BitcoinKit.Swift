@@ -60,7 +60,7 @@ class WordsController: UIViewController {
                 return
             }
                         
-            let result1 = try? await mpcCoreKitInstance.login(loginProvider: .google, clientId: "519228911939-cri01h55lsjbsia1k7ll6qpalrus75ps.apps.googleusercontent.com", verifier: globalVerifier)
+            let result1 = try? await mpcCoreKitInstance.login(loginProvider: .google, clientId: googleClientId, verifier: "google-lrc")
             
             let successBlock = { [weak self] in
 //                Manager.shared.login(restoreData: text, syncModeIndex: self?.syncModeListControl.selectedSegmentIndex ?? 0)

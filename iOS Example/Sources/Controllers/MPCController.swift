@@ -50,12 +50,17 @@ class MPCController: UIViewController {
     @IBOutlet weak var createFactorButton: UIButton!
     @IBOutlet weak var deleteFactorButton: UIButton!
     
+    @IBOutlet weak var factorView: UIView!
+    @IBOutlet weak var factorlabel: UILabel!
+    
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         title = "MPC Demo"
+        
+        factorView.isHidden = true
         
         textView?.layer.cornerRadius = 8
         Task {
@@ -70,6 +75,8 @@ class MPCController: UIViewController {
     
     func refreshFactorPubs() async throws {
         loadingIndicator.startAnimating()
+        factorView.isHidden = true
+        
         let factorPubs = try await mpcCoreKitInstance.getAllFactorPubs()
         print(factorPubs)
         var childs : [UIAction] = []
@@ -92,6 +99,9 @@ class MPCController: UIViewController {
             
             let factorPub = try curveSecp256k1.SecretKey(hex: factorKey).toPublic().serialize(compressed: true)
             cleanupFactor.updateValue(factorKey, forKey: factorPub)
+            
+            factorlabel.text = factorKey
+            factorView.isHidden = false
             // popup factorkey
         }
     }
@@ -126,4 +136,13 @@ class MPCController: UIViewController {
         view.endEditing(true)
     }
 
+    @IBAction func handleCopy(_ sender: Any) {
+        if let factor = factorlabel?.text?.trimmingCharacters(in: .whitespaces) {
+            UIPasteboard.general.setValue(factor, forPasteboardType: "public.plain-text")
+
+            let alert = UIAlertController(title: "Success", message: "Factor copied", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .cancel))
+            present(alert, animated: true)
+        }
+    }
 }
