@@ -122,11 +122,21 @@ class MPCController: UIViewController {
     
     @IBAction func handleEnableMFA(_ sender: Any) {
         Task {
-            // loading ui
-            showLoader()
-            try await mpcCoreKitInstance.enableMFA()
-            // stop loading ui
-            dismissLoader()
+            do {
+                // loading ui
+                showLoader()
+                try await mpcCoreKitInstance.enableMFA()
+                // stop loading ui
+                dismissLoader()
+            } catch let error {
+                dismissLoader()
+                let alert = UIAlertController(
+                    title: "Error", message: error.localizedDescription, preferredStyle: .alert
+                )
+                alert.addAction(UIAlertAction(title: "OK", style: .cancel))
+                present(alert, animated: true)
+                
+            }
         }
         
     }
