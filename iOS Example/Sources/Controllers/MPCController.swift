@@ -102,6 +102,8 @@ class MPCController: UIViewController {
             
             factorlabel.text = factorKey
             factorView.isHidden = false
+            
+            print(factorKey)
             // popup factorkey
         }
     }

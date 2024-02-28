@@ -3,11 +3,12 @@ import UIKit
 import CryptoSwift
 import mpc_core_kit_swift
 import BitcoinCore
+import SwiftUI
 
 let memory = UserStorage()
 //let memory = MemoryStorage()
-//var web3AuthClientId = "BPi5PB_UiIZ-cPz1GtV5i1I2iOSOHuimiXBI0e-Oe_u6X3oVAbCiAZOTEBtTXw4tsluTITPqA8zMsfxIKMjiqNQ"
-var web3AuthClientId = "519228911939-cri01h55lsjbsia1k7ll6qpalrus75ps.apps.googleusercontent.com"
+var web3AuthClientId = "BPi5PB_UiIZ-cPz1GtV5i1I2iOSOHuimiXBI0e-Oe_u6X3oVAbCiAZOTEBtTXw4tsluTITPqA8zMsfxIKMjiqNQ"
+//var hashPrefixOverwrite = "519228911939-cri01h55lsjbsia1k7ll6qpalrus75ps.apps.googleusercontent.com"
 
 var googleClientId = "519228911939-cri01h55lsjbsia1k7ll6qpalrus75ps.apps.googleusercontent.com"
 var globalVerifier = "w3a-google-demo"
@@ -33,6 +34,7 @@ class MPCLoginController: UIViewController {
     
     @IBOutlet weak var WalletType: UIButton!
     
+    @IBOutlet weak var ResetButton: UIButton!
     
     func updateWalletType( action: UIAction ) {
         print(action)
@@ -50,6 +52,7 @@ class MPCLoginController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         RecoveryView.isHidden = true
+        ResetButton.isHidden = true
 
         title = "BitcoinKit Demo"
         textConsole.text = ""
@@ -106,17 +109,18 @@ class MPCLoginController: UIViewController {
             }
             
             let result = try? await mpcCoreKitInstance.login(loginProvider: .google, clientId: googleClientId, verifier: globalVerifier)
-            
-            
+             
             guard let result = result else {
-                errorBlock("login failed")
+                ResetButton.isHidden = false
+                errorBlock("login SSS failed")
                 return
             }
             
 //            if result.requiredFactors >= 0 {
-                if result.requiredFactors > 0 {
+            if result.requiredFactors > 0 {
                 // request recover factor key
                 RecoveryView.isHidden = false
+                ResetButton.isHidden = false
                 textConsole.text = try String(data: JSONEncoder().encode(result), encoding: .utf8)
 //                textConsole.text = try String(data : JSONSerialization.data(withJSONObject: result), encoding: .utf8 )
                 
@@ -127,4 +131,14 @@ class MPCLoginController: UIViewController {
             LoginOauthButton.isOpaque = true
         }
     }
+    
+    @IBAction func handleReset(_ sender: Any) {
+        Task {
+            // loading ui
+            print("reseting...")
+            try await mpcCoreKitInstance.resetAccount()
+            print("reseting done...")
+        }
+    }
+    
 }
