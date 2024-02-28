@@ -70,7 +70,7 @@ class MPCLoginController: UIViewController {
                 }
             }
             
-            let result = try? await mpcCoreKitInstance.login(loginProvider: .google, verifier: globalVerifier)
+            let result = try? await mpcCoreKitInstance.login(loginProvider: .google, clientId: "519228911939-cri01h55lsjbsia1k7ll6qpalrus75ps.apps.googleusercontent.com", verifier: globalVerifier)
             
             
             guard let result = result else {
@@ -78,7 +78,7 @@ class MPCLoginController: UIViewController {
                 return
             }
             
-            if result.required_shares > 0 {
+            if result.requiredFactors > 0 {
                 // request recover factor key
                 RecoveryView.isHidden = false
                 textConsole.text = try String(data : JSONSerialization.data(withJSONObject: result), encoding: .utf8 )

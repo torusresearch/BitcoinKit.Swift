@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		28A0C2972B8F29E20005280C /* mpc-core-kit-swift in Frameworks */ = {isa = PBXBuildFile; productRef = 28A0C2962B8F29E20005280C /* mpc-core-kit-swift */; };
 		2FA5D47CFAEB8DB143F27645 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA5DACF4DE83AC5FE512D28 /* Extensions.swift */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		6BC11A5628EEAF0D0001FDF1 /* BitcoinKit in Frameworks */ = {isa = PBXBuildFile; productRef = 6BC11A5528EEAF0D0001FDF1 /* BitcoinKit */; };
@@ -31,7 +32,6 @@
 		D36AAAAA23A2125E0065B32B /* TransactionRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36AAA9423A2125D0065B32B /* TransactionRecord.swift */; };
 		D36AAAAC23A212E30065B32B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D36AAAAB23A212E30065B32B /* LaunchScreen.xib */; };
 		F08DBDF22B830EE600B2122A /* mpc-core-kit-swift in Frameworks */ = {isa = PBXBuildFile; productRef = F08DBDF12B830EE600B2122A /* mpc-core-kit-swift */; };
-		F08DBDF52B833AF800B2122A /* mpc-core-kit-swift in Frameworks */ = {isa = PBXBuildFile; productRef = F08DBDF42B833AF800B2122A /* mpc-core-kit-swift */; };
 		F08DBDF72B8449FB00B2122A /* MPCController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08DBDF62B8449FB00B2122A /* MPCController.swift */; };
 		F08DBE032B84697200B2122A /* MPCController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F08DBE022B84697200B2122A /* MPCController.xib */; };
 		F08DBE052B84A18E00B2122A /* MPCLoginController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F08DBE042B84A18E00B2122A /* MPCLoginController.xib */; };
@@ -78,7 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F08DBDF52B833AF800B2122A /* mpc-core-kit-swift in Frameworks */,
+				28A0C2972B8F29E20005280C /* mpc-core-kit-swift in Frameworks */,
 				F08DBDF22B830EE600B2122A /* mpc-core-kit-swift in Frameworks */,
 				6BC11A5628EEAF0D0001FDF1 /* BitcoinKit in Frameworks */,
 			);
@@ -190,7 +190,7 @@
 			packageProductDependencies = (
 				6BC11A5528EEAF0D0001FDF1 /* BitcoinKit */,
 				F08DBDF12B830EE600B2122A /* mpc-core-kit-swift */,
-				F08DBDF42B833AF800B2122A /* mpc-core-kit-swift */,
+				28A0C2962B8F29E20005280C /* mpc-core-kit-swift */,
 			);
 			productName = BitcoinKit;
 			productReference = 6BE77D6F28F687F400BD03EF /* BitcoinKit Demo.app */;
@@ -223,7 +223,7 @@
 			);
 			mainGroup = 607FACC71AFB9204008FA782;
 			packageReferences = (
-				F08DBDF32B833AF800B2122A /* XCRemoteSwiftPackageReference "mpc-core-kit-swift" */,
+				28A0C2952B8F29E20005280C /* XCRemoteSwiftPackageReference "mpc-core-kit-swift" */,
 			);
 			productRefGroup = 607FACC71AFB9204008FA782;
 			projectDirPath = "";
@@ -449,7 +449,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		F08DBDF32B833AF800B2122A /* XCRemoteSwiftPackageReference "mpc-core-kit-swift" */ = {
+		28A0C2952B8F29E20005280C /* XCRemoteSwiftPackageReference "mpc-core-kit-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/tkey/mpc-core-kit-swift";
 			requirement = {
@@ -460,17 +460,17 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		28A0C2962B8F29E20005280C /* mpc-core-kit-swift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 28A0C2952B8F29E20005280C /* XCRemoteSwiftPackageReference "mpc-core-kit-swift" */;
+			productName = "mpc-core-kit-swift";
+		};
 		6BC11A5528EEAF0D0001FDF1 /* BitcoinKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = BitcoinKit;
 		};
 		F08DBDF12B830EE600B2122A /* mpc-core-kit-swift */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = "mpc-core-kit-swift";
-		};
-		F08DBDF42B833AF800B2122A /* mpc-core-kit-swift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F08DBDF32B833AF800B2122A /* XCRemoteSwiftPackageReference "mpc-core-kit-swift" */;
 			productName = "mpc-core-kit-swift";
 		};
 /* End XCSwiftPackageProductDependency section */
