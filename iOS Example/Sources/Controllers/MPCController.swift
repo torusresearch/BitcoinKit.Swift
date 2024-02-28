@@ -53,8 +53,6 @@ class MPCController: UIViewController {
     @IBOutlet weak var factorView: UIView!
     @IBOutlet weak var factorlabel: UILabel!
     
-    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -74,7 +72,6 @@ class MPCController: UIViewController {
     }
     
     func refreshFactorPubs() async throws {
-        loadingIndicator.startAnimating()
         factorView.isHidden = true
         
         let factorPubs = try await mpcCoreKitInstance.getAllFactorPubs()
@@ -86,13 +83,11 @@ class MPCController: UIViewController {
             print(factorPub)
         })
         deleteFactorButton.menu = UIMenu(children: childs )
-        loadingIndicator.stopAnimating()
     }
     
     func handleCreateFactor (action: UIAction) {
-
-        loadingIndicator.startAnimating()
         Task { @MainActor in
+            showLoader()
             let factorKey = try await mpcCoreKitInstance.createFactor(tssShareIndex: .DEVICE,factorKey: nil, factorDescription: .DeviceShare, additionalMetadata: [:])
             
             try await refreshFactorPubs()
@@ -105,15 +100,17 @@ class MPCController: UIViewController {
             
             print(factorKey)
             // popup factorkey
+            dismissLoader()
         }
     }
     
     func handleDeleteFactor (action: UIAction) {
         Task { @MainActor in
+            showLoader()
             let factorkey = cleanupFactor[action.title]
             try await mpcCoreKitInstance.deleteFactor(deleteFactorPub: action.title, deleteFactorKey: factorkey)
-            
             try await refreshFactorPubs()
+            dismissLoader()
         }
         
 //        var currentChildren = deleteFactorButton.menu!.children
@@ -126,8 +123,10 @@ class MPCController: UIViewController {
     @IBAction func handleEnableMFA(_ sender: Any) {
         Task {
             // loading ui
+            showLoader()
             try await mpcCoreKitInstance.enableMFA()
             // stop loading ui
+            dismissLoader()
         }
         
     }
@@ -136,6 +135,36 @@ class MPCController: UIViewController {
         super.touchesEnded(touches, with: event)
 
         view.endEditing(true)
+    }
+    
+    private func dismissLoader() {
+        if let loadingViewController = self.presentedViewController, loadingViewController is UIAlertController {
+            dismiss(animated: false, completion: nil)
+        }
+    }
+    
+    private func showLoader() {
+        let alert = UIAlertController(title: nil, message: "", preferredStyle: .alert)
+
+        let loadingIndicator = UIActivityIndicatorView(style: .large)
+
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.translatesAutoresizingMaskIntoConstraints = false
+        loadingIndicator.isUserInteractionEnabled = false
+        loadingIndicator.startAnimating();
+
+        alert.view.addSubview(loadingIndicator)
+        
+        NSLayoutConstraint.activate([
+            alert.view.heightAnchor.constraint(equalToConstant: 95),
+            alert.view.widthAnchor.constraint(equalToConstant: 95),
+            loadingIndicator.centerXAnchor.constraint(
+                equalTo: alert.view.centerXAnchor
+            ),
+            loadingIndicator.centerYAnchor.constraint(equalTo: alert.view.centerYAnchor)
+        ])
+        
+        present(alert, animated: true, completion: nil)
     }
 
     @IBAction func handleCopy(_ sender: Any) {
